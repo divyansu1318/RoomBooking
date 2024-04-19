@@ -1,0 +1,21 @@
+.tickcntr {
+    display: flex;
+    align-items: center;
+}
+
+.modal-footer {
+    display: inline-block; 
+    width: 30%; 
+    border-top: none;
+}
+
+.logout {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: red;
+    color: #FFF;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}

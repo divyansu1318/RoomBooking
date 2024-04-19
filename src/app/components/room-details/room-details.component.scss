@@ -1,0 +1,88 @@
+::ng-deep .mat-calendar-header {
+    display: none;
+}
+.btn-group{
+  
+    .select{
+        position:relative;
+      
+        input:checked + label {
+          background-color: #ffc107;
+          &:hover,
+          &:focus,
+          &:active{
+            background-color: #ffc107;      
+          }
+      }  
+      input{
+          opacity: 0;
+          position: absolute;
+        }
+      
+      .button_select{
+        margin: 0 10px 10px 0;
+        display:flex;
+        background-color: transparent;   
+        
+        &:hover,
+        &:focus,
+        &:active{
+          background-color: transparent;      
+        }
+      }
+    }
+      
+    }
+    
+    
+    .option {
+        position:relative;
+      
+      input{
+          opacity: 0;
+          position: absolute;
+        }
+      
+        input:checked + span {
+          background-color: #ffc107;
+          &:hover,
+          &:focus,
+          &:active{
+            background-color: #ffc107;      
+          }
+      } 
+      
+      .btn-option{
+        margin: 0 10px 10px 0;
+        display:flex;
+        background-color: transparent;   
+        
+        &:hover,
+        &:focus,
+        &:active{
+          background-color: transparent;      
+        }
+      }
+    }
+    
+.button_select.selected {
+  background-color: red !important;
+  border: 1px solid red;
+  color: #FFF;
+  cursor: not-allowed;
+}
+
+.button_select.selection-started {
+  background-color: #ffc107 !important;
+  color: #FFF;
+  border: 1px solid #ffc107;
+}
+
+.lblTag {
+  padding: 5px 15px;
+  background-color: #ddd;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 5px;
+  width: auto;
+}

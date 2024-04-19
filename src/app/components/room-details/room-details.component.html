@@ -1,0 +1,33 @@
+<div style="border: 1px solid #333;">
+    <div class="row" style="margin: 12px;">
+        <h3 style="font-weight: bold;">{{roomDetails.name}}</h3>
+        <h5 class="lblTag" *ngIf="roomDetails?.tags.length > 0 && roomDetails.tags[0].isProjector">Project</h5>
+        <h5 class="lblTag" *ngIf="roomDetails?.tags.length > 0 && roomDetails.tags[0].isSound">Sound</h5>
+        <h5 class="lblTag" *ngIf="roomDetails?.tags.length > 0 && roomDetails.tags[0].isLargerScreen">Screen</h5>
+    </div>
+ 
+    <div class="row" style="margin: 0px;">
+        <div class="col-md-8">
+            <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected" (click)="setTime()"></mat-calendar>
+            </mat-card>
+        </div>
+
+        <div class="col-md-4">
+           <span style="display: block; font-size: 12px; margin-bottom: 20px;">{{roomDetails.capacity}} Seat Capacity</span>
+           <span style="display: block;">
+                <button type="button" class="btn btn-dark" (click)="bookRoom()">Book</button>
+            </span>
+         </div>
+
+    </div>
+
+
+    <div class="row" style="margin: 20px 0px;">
+        <div class="btn-group col-md-12" style="flex-wrap: wrap;">
+            <div class="select" *ngFor="let time of timeArray">
+                <label class="btn btn-warning button_select {{ time.isSelectionStart ? ' selection-started' : '' }} {{ time.isSelected ? ' selected' : '' }}" style="padding: 7px; width: max-content;font-size: 10px;" for="{{time.start}}" (click)="slctTime(time)">{{time.start}} - {{time.end}}</label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="logout" (click)="logout()">Logout</div>
+<div class="row" style="margin: 10vh 30vh;">
+    <div class="col-md-3"></div>
+    <div class="input-group col-md-6" style="width: 50%; margin-bottom: 5vh;">
+        <input type="search" placeholder="Search here..." aria-describedby="button-addon5" class="form-control" [(ngModel)]="searchKey">
+        <!-- <div class="input-group-append">
+          <button id="button-addon5" type="submit" class="btn btn-primary">Search</button>
+        </div> -->
+      </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Room</button>
+    </div>
+    
+    <div class="col-md-6" style="height: 75vh; overflow: auto;">
+        <app-room-list [searchKey] = "searchKey" (roomSelection)="roomDeatils($event)"></app-room-list>
+    </div>
+
+    <div class="col-md-6" style="max-height: 75vh; overflow: auto;">
+        <app-room-details [roomDetails]="roomDetails"></app-room-details>
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" #addRoomModel tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title" id="exampleModalLabel">Add Room</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"  id="modelClose" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="roomForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter room name" formControlName="name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Capacity</label>
+                  <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter room capacity" formControlName="capacity">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label tickcntr" for="exampleCheck1"><input type="checkbox" class="form-check-input" id="exampleCheck1" style="vertical-align: middle;" name="isProjector" value = "isProjector" formControlName="isProjector"><span style="margin-left: 10px; vertical-align: middle;">Projector</span></label>
+                    <label class="form-check-label tickcntr" for="exampleCheck2"><input type="checkbox" class="form-check-input" id="exampleCheck2" style="vertical-align: middle;" name="isSound" value = "isSound" formControlName="isSound"><span style="margin-left: 10px; vertical-align: middle;">Sound</span></label>
+                    <label class="form-check-label tickcntr" for="exampleCheck3"><input type="checkbox" class="form-check-input" id="exampleCheck3" style="vertical-align: middle;" name="isLargerScreen" value = "isLargerScreen" formControlName="isLargerScreen"><span style="margin-left: 10px; vertical-align: middle;">Larger Screen</span></label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="submit" class="btn btn-primary {{ !roomForm.valid ? ' disabled' : '' }}" (click)="addRoom()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
