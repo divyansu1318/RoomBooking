@@ -1,4 +1,4 @@
-<div class="row" style="border: 1px solid #333; padding: 10px 20px; margin-bottom: 10px;" *ngFor = "let room of roomDetails" (click)="selectRoom(room)">
+<div class="row" style="border: 1px solid #333; padding: 10px 20px; margin-bottom: 10px;" [ngClass]="{ selected: selectedRoom && (selectedRoom.id === room.id) }" *ngFor = "let room of roomDetails" (click)="selectRoom(room)">
     <div class="col-md-12">
         <h3 style="float: left; font-weight: bold; display: inline-block;">{{room.name}}</h3>
         <h5 class="lblTag" *ngIf="room?.tags.length > 0 && room?.tags[0].isProjector">Project</h5>
@@ -7,7 +7,7 @@
     </div>
     
     <div class="col-md-12">
-        <h6 style="float: left; display: inline-block;">Currently available</h6>
+        <h6 style="float: left; display: inline-block;">{{ room.availability }}</h6>
         <h6 style="float: right; display: inline-block;">{{room.capacity}} seat capacity</h6>
     </div>
 </div>

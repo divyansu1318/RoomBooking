@@ -17,6 +17,9 @@ export class RoomDetailsComponent implements OnInit, OnChanges {
   fromTimeSelect: any;
   toTimeSelect:any;
   timeSlots: any = [];
+
+  todayDate:Date = new Date();
+
   constructor(private http: HttpService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -65,6 +68,11 @@ export class RoomDetailsComponent implements OnInit, OnChanges {
     console.log("selected", this.selected);
     let payload: any = [];
     let isError: boolean = false
+
+    if (Number(moment(this.todayDate).format('DD')) > Number(moment(this.selected).format('DD'))) {
+      this._snackBar.open('Please select valid Date.', 'Close', { duration: 3000 }); 
+      return;
+    }
 
     if (this.timeSlots.length === 0) isError = true;
     this.timeSlots.forEach((element: any) => {
